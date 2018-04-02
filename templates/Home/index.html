@@ -1,0 +1,136 @@
+{% extends "base/base.html" %}
+
+{% block titulo %}Apolo{% endblock titulo %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white">
+  <a class="navbar-brand" id="Titulo" href="#"><i class="material-icons">cloud</i>  APOLO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	<ul class=" navbar-nav ml-auto">
+	  <li class="nav-item active">
+		<a class="nav-link" href="#section1">¿Qué somos? <span class="sr-only">(current)</span></a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">Entrar</a>
+	  </li>
+	</ul>
+  </div>
+</nav>
+
+<div id="amplia" class="mt-5 row">
+	<div class="col-m-9 col-lg-12">
+		<div id="fondoJ" class="centrar  espandeDivs jumbotron">
+			<br>
+			<h1 class="text-center  titulos">¡Bienvenido!</h1>
+			<p class="text-center subTitulo">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			<hr class="my-4">
+			<p class="d-none d-lg-block">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+			<p class="lead">
+				<a class=" btn btn-primary btn-lg" href="#section2" role="button">Conoce más...</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div id="section1" class="container-fluid bg-success" style="padding-top:70px;padding-bottom:70px">
+	<div class="row espandeDivs">
+		<div class="col-sm-12 col-md-12 col-lg-6">
+			<h2>Texto explicativo #1</h2>
+			<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+			<p><small>This line of text is meant to be treated as fine print.</small></p>
+			<p>The following is <strong>rendered as bold text</strong>.</p>
+			<p>The following is <em>rendered as italicized text</em>.</p>
+			<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+		</div>
+		<div class="d-none d-lg-block col-lg-6">
+			<h2>Imagen</h2>
+			<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+			<p><small>This line of text is meant to be treated as fine print.</small></p>
+			<p>The following is <strong>rendered as bold text</strong>.</p>
+			<p>The following is <em>rendered as italicized text</em>.</p>
+			<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+		</div>
+	</div>
+</div>
+<div id="section2" class="container-fluid bg-danger" style="padding-top:70px;padding-bottom:70px">
+	<div class="row espandeDivs">
+		<div class="col-sm-12 col-md-12 col-lg-6">
+			<h2>Texto explicativo #2</h2>
+			<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+			<p><small>This line of text is meant to be treated as fine print.</small></p>
+			<p>The following is <strong>rendered as bold text</strong>.</p>
+			<p>The following is <em>rendered as italicized text</em>.</p>
+			<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+		</div>
+		<div class="d-none d-lg-block col-lg-6">
+			<h2>Imagen</h2>
+			<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+			<p><small>This line of text is meant to be treated as fine print.</small></p>
+			<p>The following is <strong>rendered as bold text</strong>.</p>
+			<p>The following is <em>rendered as italicized text</em>.</p>
+			<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block modales %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title text-center" id="exampleModalLabel">Log in_</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	  <div class="clearfix centrar modal-body">
+			{% if Mensaje != '' %}
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Santo guacamole!</strong> {{Mensaje}}.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+			{% endif %}
+		  <p class="text-center mb-4 h5"> Bienvenido</p>
+		  <form method="post">
+			  {% csrf_token %}
+			<div class="form-group row">
+			  <label for="inputEmail3"  class="col-sm-2 col-form-label">Email</label>
+			  <div class="col-sm-10">
+				<input type="email" name="correo" class="form-control" id="inputEmail3" placeholder="Email">
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+			  <div class="col-sm-10">
+				<input type="password" name="pass" class="form-control" id="inputPassword3" placeholder="Password">
+			  </div>
+			</div>
+
+			<button type="submit" class="mt-1 mb-2 btn btn-success "><i class="material-icons">done</i> Entrar</button>
+			<p class=" text-center">¿Aún no eres miembro? <a href="{% url 'crear' %}">únete a esta comunidad</a> </p>
+		</form>
+	  </div>
+	</div>
+  </div>
+</div>
+{% endblock modales %}
+
+
+{% block script %}
+
+	{% if señal %}
+		<script>
+				$('#exampleModal').modal('show')
+		</script>
+	{% endif %}
+	
+	
+{% endblock script %}
+	

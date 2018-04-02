@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+     <title>Apolo</title>
+     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+     <link rel="stylesheet" href="{% static "css/indexS.css" %}">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="{% static "font/css/open-iconic-bootstrap.css" %}" rel="stylesheet">
+     {% block css %}{% endblock css %}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="container-fluid">
+
+    {% block content %}{% endblock content %}
+
+    </div>
+
+    {% block modales %}{% endblock modales %}
+
+
+    <script type="text/javascript" src="{% static "js/jquery.js" %}" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}" ></script>
+    {% block script %}{% endblock script %}
+    <script type="text/javascript">
+
+        $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+        });
+
+    </script>
+</body>
+</html>
