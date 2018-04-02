@@ -5,9 +5,9 @@ from apps.Usuario.forms import PersonaForm
 
 def index(request):
     if request.method == "POST":
-        
-        if Persona.objects.filter(email=request.POST["correo"]) == '':
-            persona = Persona.objects.get(email=request.POST["correo"])
+        busqueda = list(Persona.objects.filter(username=request.POST["correo"]))
+        if len(busqueda) > 0:
+            persona = Persona.objects.get(username=request.POST["correo"])
             if(persona.password == request.POST["pass"]):
                 return render(request, 'DashBoard/index.html', {'persona':persona})
             else:
@@ -24,7 +24,7 @@ def Registro_usuario(request):
             form.save()
             return render(request, 'index/registro.html', {'form':form, 'correto':'v'})
         elif request.POST["correo"] != '':
-            persona = Persona.objects.get(email=request.POST["correo"])
+            persona = Persona.objects.get(username=request.POST["correo"])
             if(persona.password == request.POST["pass"]):
                 return HttpResponse("Bienvenido al sistema " + persona.username)
             else:
