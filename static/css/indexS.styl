@@ -1,0 +1,92 @@
+@import 'nib'
+@import 'nib/gradients'
+@import 'nib/overflow'
+@import 'nib/normalize'
+blanco = #fff
+gris = #bbbbbb
+btnVerificar = #04dead
+nav_bar = #51adcf
+color_rojo = #DC133B
+tamano = 24px
+tamanoOpc = 20px
+tamanoJumbo = 80px
+tamanoP = 40px
+tamanoJumbos1 = 40px
+tamanoPs1 = 25px
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+// este archivo se debe ejecutar desde consola node con stylus nombre_archivo.styl -c -w
+
+/*
+Comentario varias lineas
+*/
+
+body
+    position: relative
+
+@font-face
+  font-size: tamano
+  font-family: 'Montserrat', sans-serif
+  font-style: normal
+
+.titulos
+    font-family: 'Montserrat'
+    font-size: tamanoJumbo
+
+.subTitulo
+    font-family: 'Montserrat'
+    font-size: tamanoP
+
+.navbar
+    #Titulo
+        font-family: 'Montserrat'
+        font-size: tamano
+
+
+#navbarNavDropdown
+    font-family: 'Montserrat'
+    font-size: tamanoOpc
+
+#fondoJ
+    background-image: url('../img/bdc.jpg')
+    background-repeat: repeat
+
+
+.espandeDivs
+    height: 100vh
+
+.centrar
+    display: inline-block
+    text-align: center
+
+
+.material-icons
+    font-family: 'Material Icons'
+    font-weight: normal
+    font-style: normal
+    font-size: 24px  /* Preferred icon size */
+    display: inline-block
+    line-height: 1
+    text-transform: none
+    letter-spacing: normal
+    word-wrap: normal
+    white-space: nowrap
+    direction: ltr
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale
+
+    /* Support for IE. */
+    font-feature-settings: 'liga'
+
+@media screen and (max-width: 600px)
+    .titulos
+        font-size: tamanoJumbos1
+        margin-bottom: 15%
+    .subTitulo
+        font-size: tamanoPs1
