@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect
 from apps.Usuario.models import Persona
 from apps.Usuario.forms import PersonaForm
 from django.contrib.auth import authenticate, login as dj_login
-from django.contrib.auth import logout as dj_logout
 from django.conf import settings
-from django.shortcuts import redirect
+from django.urls import reverse
+from apps.Empresa.views import index
 # Create your views here.
 
 def login(request):
@@ -16,21 +16,16 @@ def login(request):
         persona = Persona.objects.get(username=request.POST["correo"])
         if user is not None:
             dj_login(request,user)
-            return render(request, 'DashBoard/index.html', {'persona':persona})
+            request.session['pk_user'] = persona.username
+            return redirect('empresas:index')
         else:
             return render(request,"Home/login.html",{ 'Mensaje':'Los datos ingresados no son correctos.'})
 
     return render(request, 'Home/login.html',{ 'Mensaje':''})
 
-def perfil(request):
-    return render(request, 'Home/perfil.html')
-
 def index(request):
-    return render(request,"Home/index.html",{ 'Mensaje':'', 'señal':False})
+    return render(request,"Home/index.html")
 
-def logout_view(request):
-    dj_logout(request)
-    return redirect('index')
 
 def Registro_usuario(request):
     if request.method == 'POST':

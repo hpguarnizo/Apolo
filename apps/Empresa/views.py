@@ -1,16 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from apps.Empresa.models import Empresa
 from apps.Usuario.models import Persona
 from django.contrib.auth import authenticate
+from django.contrib.auth import logout as django_logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def index(request):
-    if request.method == "POST":
-        persona = Persona.objects.get(email=request.POST["correo"])
-        if(persona.password == request.POST["pass"]):
-            return render(request, 'DashBoard/index.html', {'persona':persona})
-        else:
-            return HttpResponse("paso algo")
+    username = request.session['pk_user']
+    persona = Persona.objects.get(username=username)
+    return render(request,"DashBoard/index.html",{'persona':persona})
 
-    return render(request,"index/index.html")
+@login_required
+def logout_view(request):
+    try:
+        del request.session['pk_user']
+    except KeyError:
+        pass
+    #causa un error cuando se hace el llamado 
+    #django_logout(request)
+    return redirect('user:index')
+
+@login_required
+def perfil(request):
+    return render(request, 'Home/perfil.html')
