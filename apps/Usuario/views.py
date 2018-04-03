@@ -3,6 +3,12 @@ from apps.Usuario.models import Persona
 from apps.Usuario.forms import PersonaForm
 # Create your views here.
 
+def login(request):
+    return render(request, 'Home/login.html')
+
+def perfil(request):
+    return render(request, 'Home/perfil.html')
+
 def index(request):
     if request.method == "POST":
         busqueda = list(Persona.objects.filter(username=request.POST["correo"]))
