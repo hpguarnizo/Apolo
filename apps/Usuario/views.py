@@ -12,14 +12,18 @@ def login(request):
     if request.method == "POST":
         usuario = request.POST['correo']
         password = request.POST['pass']
-        user = authenticate(username=usuario, password=password)
-        persona = Persona.objects.get(username=request.POST["correo"])
-        if user is not None:
-            dj_login(request,user)
-            request.session['pk_user'] = persona.username
-            return redirect('empresas:index')
+        busqueda = list(Persona.objects.filter(username=usuario))
+        if len(busqueda) > 0:
+            user = authenticate(username=usuario, password=password)
+            persona = Persona.objects.get(username=request.POST["correo"])
+            if user is not None:
+                dj_login(request,user)
+                request.session['pk_user'] = persona.username
+                return redirect('empresas:index')
+            else:
+                return render(request,"Home/login.html",{ 'Mensaje':'La contraseña es incorrecta.'})
         else:
-            return render(request,"Home/login.html",{ 'Mensaje':'Los datos ingresados no son correctos.'})
+            return render(request,"Home/login.html",{ 'Mensaje':'El correo electronico ingresado no es valido'})
 
     return render(request, 'Home/login.html',{ 'Mensaje':''})
 
