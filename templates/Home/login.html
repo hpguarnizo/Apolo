@@ -39,27 +39,23 @@
                 <form  method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                    <input id="username" name="correo" type="text" placeholder="Nombre de usuario" autocomplete="off" class="form-control">
+                    <input id="username" name="correo" type="text" placeholder="Correo electrónico" autocomplete="off" class="form-control">
                   </div>
                   <div class="form-group">
                     <input id="password" name="pass" type="password" placeholder="Contraseña" class="form-control">
                   </div>
-                  <div class="form-group row login-tools">
-                    <div class="col-xs-6 login-remember">
-                      <div class="be-checkbox">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Recordarme</label>
-                      </div>
-                    </div>
-                    <div class="col-xs-6 login-forgot-password"><a href="#">Olvidó su contraseña?</a></div>
-                  </div>
+                  
                   <div class="form-group login-submit">
                     <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Entrar</button>
                   </div>
+                  <div class="text-center"><span>¿No tiene una cuenta? <a href="#">Crear cuenta</a></span></div>
                 </form>
+                <div class="text-center">                    
+                  <a href="#">¿Olvidó su contraseña?</a>
+                </div>
               </div>
             </div>
-            <div class="splash-footer"><span>No tiene una cuenta? <a href="#">Crear cuenta</a></span></div>
+            
           </div>
         </div>
       </div>
