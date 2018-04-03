@@ -24,7 +24,7 @@ class PersonaForm(forms.ModelForm):
             'last_name': 'Apellidos',
         }
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control'}),
+            'username': forms.TextInput(attrs={'name':'user','class':'form-control'}),
             'password': forms.PasswordInput(attrs={'class':'form-control'}),
             'first_name': forms.TextInput(attrs={'class':'form-control'}),
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
