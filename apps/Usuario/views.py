@@ -1,43 +1,54 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from apps.Usuario.models import Persona
 from apps.Usuario.forms import PersonaForm
+from django.contrib.auth import authenticate, login as dj_login
+from django.contrib.auth import logout as dj_logout
+from django.conf import settings
+from django.shortcuts import redirect
 # Create your views here.
 
 def login(request):
-    return render(request, 'Home/login.html')
+    if request.method == "POST":
+        usuario = request.POST['correo']
+        password = request.POST['pass']
+        user = authenticate(username=usuario, password=password)
+        persona = Persona.objects.get(username=request.POST["correo"])
+        if user is not None:
+            dj_login(request,user)
+            return render(request, 'DashBoard/index.html', {'persona':persona})
+        else:
+            return render(request,"Home/login.html",{ 'Mensaje':'Los datos ingresados no son correctos.'})
+
+    return render(request, 'Home/login.html',{ 'Mensaje':''})
 
 def perfil(request):
     return render(request, 'Home/perfil.html')
 
 def index(request):
-    if request.method == "POST":
-        busqueda = list(Persona.objects.filter(username=request.POST["correo"]))
-        if len(busqueda) > 0:
-            persona = Persona.objects.get(username=request.POST["correo"])
-            if(persona.password == request.POST["pass"]):
-                return render(request, 'DashBoard/index.html', {'persona':persona})
-            else:
-                return render(request,"Home/index.html",{ 'Mensaje':'La contraseña es incorrecta.', 'señal':True})
-        else:
-            return render(request,"Home/index.html",{ 'Mensaje':'El correo electronico es incorrecto.', 'señal':True})
-
     return render(request,"Home/index.html",{ 'Mensaje':'', 'señal':False})
+
+def logout_view(request):
+    dj_logout(request)
+    return redirect('index')
 
 def Registro_usuario(request):
     if request.method == 'POST':
         form = PersonaForm(request.POST)
         if(form.is_valid()):
-            form.save()
-            return render(request, 'index/registro.html', {'form':form, 'correto':'v'})
-        elif request.POST["correo"] != '':
-            persona = Persona.objects.get(username=request.POST["correo"])
-            if(persona.password == request.POST["pass"]):
-                return HttpResponse("Bienvenido al sistema " + persona.username)
-            else:
-                return HttpResponse("paso algo")
-
-        return redirect('index')
+            formulario = form.save()
+            #cifro contraseña
+            formulario.set_password(form.cleaned_data['password'])
+            formulario.save()
+            #clono el correo en el campo user
+            p = Persona.objects.get(username=request.POST["username"])
+            p.email = request.POST["username"]
+            p.save()
+            return render(request, 'Home/registro.html', {'form':form, 'Mensaje':'se ha registrado el usuario con exito.','tipo':'success'})
+        else:
+            return render(request, 'Home/registro.html', {'form':form, 'Mensaje':'Se tiene un error en el formulario.','tipo':'danger'})
+            
     else:
         form = PersonaForm()
 
-    return render(request, 'Home/registro.html', {'form':form, 'correto':'f'})
+    return render(request, 'Home/registro.html', {'form':form, 'Mensaje':'','tipo':'success'})
