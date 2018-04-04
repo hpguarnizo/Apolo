@@ -1,36 +1,29 @@
 from django import forms
 import datetime
-from apps.Usuario.models import Persona
+from apps.Empresa.models import Empresa
 
-class PersonaForm(forms.ModelForm):
+class Registro_empresa_Form(forms.ModelForm):
 
     class Meta:
-        model = Persona
+        model = Empresa
         fields = [
-            'username',
-            'password',
-            'first_name',
-            'last_name',
-            'date_joined',
-            'is_active',
-            'is_staff',
-            'is_superuser',
-            'last_login',
+            'NIT',
+            'Nombre_empresa',
+            'Sector',
+            'Activos',
+            'Numero_empleados',
         ]
         labels = {
-            'username':'Correo Electronico',
-            'password': 'Contraseña',
-            'first_name': 'Nombres',
-            'last_name': 'Apellidos',
+            'NIT':'NIT',
+            'Nombre_empresa':'Nombre de su empresa',
+            'Sector':'Sector en el que trabaja su empresa',
+            'Activos':'Activos anuales de su empresa',
+            'Numero_empleados':'Numero de empleados actuales en su empresa',
         }
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control'}),
-            'password': forms.PasswordInput(attrs={'class':'form-control'}),
-            'first_name': forms.TextInput(attrs={'class':'form-control'}),
-            'last_name': forms.TextInput(attrs={'class':'form-control'}),
-            'date_joined': forms.HiddenInput(attrs={'value':datetime.datetime.now()}),
-            'is_active': forms.HiddenInput(attrs={'value':True}),
-            'is_staff': forms.HiddenInput(attrs={'value':False}),
-            'is_superuser': forms.HiddenInput(attrs={'value':False}),
-            'last_login': forms.HiddenInput(attrs={'value':datetime.datetime.now()}),
+            'NIT': forms.TextInput(attrs={'class':'form-control'}),
+            'Nombre_empresa': forms.TextInput(attrs={'class':'form-control'}),
+            'Sector': forms.Select(attrs={'class':'form-control'}),
+            'Activos': forms.TextInput(attrs={'class':'form-control'}),
+            'Numero_empleados': forms.TextInput(attrs={'class':'form-control','value':'1'}),
         }

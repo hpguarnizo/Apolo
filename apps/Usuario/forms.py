@@ -2,7 +2,7 @@ from django import forms
 import datetime
 from apps.Usuario.models import Persona
 
-class PersonaForm(forms.ModelForm):
+class Registro_Persona_Form(forms.ModelForm):
 
     class Meta:
         model = Persona

@@ -23,7 +23,8 @@
                                     <li>
                                         <div class="user-info">
                                             <div class="user-name">{{persona.first_name}}</div>
-                                            <div class="user-position online">Tipo de empresa: {{persona.tipo}}</div>
+                                            <div class="user-position">{{empresa.Nombre_empresa}}</div>
+                                            <div class="user-position">Tipo de empresa: {{empresa.Sector}}</div>
                                         </div>
                                     </li>
                                     <li><a href="{% url 'empresa:perfil' %}"><span class="icon mdi mdi-face"></span> Account</a></li>
