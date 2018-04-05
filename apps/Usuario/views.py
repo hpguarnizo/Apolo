@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login as dj_login
 from django.conf import settings
 from django.urls import reverse
 from apps.Empresa.views import index
+from django.conf import settings
 # Create your views here.
 
 def login(request):
@@ -28,7 +29,10 @@ def login(request):
     return render(request, 'Home/login.html',{ 'Mensaje':''})
 
 def index(request):
-    return render(request,"Home/index.html")
+    if not request.user.is_authenticated:
+        return render(request,"Home/index.html")
+    else:
+        return redirect('empresas:index')
 
 
 def Registro_usuario(request):
@@ -40,7 +44,7 @@ def Registro_usuario(request):
             formulario = formulario_persona.save()
 
             #cifro contraseña
-            formulario.set_password(form.cleaned_data['password'])
+            formulario.set_password(formulario_persona.cleaned_data['password'])
             formulario.save()
 
             #clono el correo en el campo user

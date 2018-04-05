@@ -21,12 +21,12 @@ def index(request):
 
 @login_required
 def logout_view(request):
-    try:
-        del request.session['pk_user']
-    except KeyError:
-        pass
+    #try:
+    #    del request.session['pk_user']
+    #except KeyError:
+    #    pass
     #causa un error cuando se hace el llamado 
-    django_logout(request)
+    #django_logout(request)
     return redirect('user:index')
 
 @login_required
