@@ -26,7 +26,7 @@ def logout_view(request):
     #except KeyError:
     #    pass
     #causa un error cuando se hace el llamado 
-    #django_logout(request)
+    django_logout(request)
     return redirect('user:index')
 
 @login_required
