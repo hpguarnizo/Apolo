@@ -3,6 +3,7 @@
 {% block titulo %}Apolo{% endblock titulo %}
 
 {% block css %}
+    <link rel="shortcut icon" href="{% static "assets/img/logo4.png"%}">
     <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
     <style>
     body {
@@ -18,10 +19,10 @@
 
 {% block content %}
 <nav class="navbar border navbar-expand-lg fixed-top navbar-light bg-white">
-  <a class="navbar-brand" id="Titulo" href="{% url 'user:index' %}"><i class="material-icons">cloud</i>  APOLO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" id="Titulo" href="{% url 'user:index' %}"><i class="material-icons">cloud</i>  APOLO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+    </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	<ul class=" navbar-nav ml-auto">
 	  <li class="nav-item active">
@@ -49,11 +50,11 @@
         </div>
     {% endif %}   
     
-    <div class="ml-auto">
-        <div class="col-ml-8">
-            <div class="panel panel-default">
-            <div class="panel-heading panel-heading-divider">Registro<span class="panel-subtitle">These are the basic bootstrap form elements</span></div>
-            <div class="panel-body">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default panel-border-color panel-border-color-primary">
+                    <div class="panel-heading text-center"><img src="{% static 'assets/img/logo2.png' %}" alt="Apolo" width="102" height="140" class="logo-img"><span class="splash-description">Registro de usuario</span></div>
+                    <div class="panel-body">
                 <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                     {% csrf_token %}
                    <!-- {{form.as_p}} -->
@@ -97,7 +98,10 @@
                 {{form.is_staff}} 
                 {{form.is_superuser}} 
                 {{form.last_login}} 
-                <button type="submit" class="btn btn-primary" name="button">Registro</button>                                
+
+                <div class="text-center">
+                        <button type="submit" class="btn btn-primary" name="button">Registro</button> 
+                </div>
                 </form>
             </div>
             </div>
