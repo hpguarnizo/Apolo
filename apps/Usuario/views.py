@@ -39,20 +39,17 @@ def Registro_usuario(request):
     if request.method == 'POST':
         formulario_persona = Registro_Persona_Form(request.POST)
         if(formulario_persona.is_valid()):
-            
-            #Guardo formulario de registro de usuario
-            formulario = formulario_persona.save()
+            if request.POST["password"] == request.POST["c_contraseña"]:
+                #Guardo formulario de registro de usuario
+                formulario = formulario_persona.save(commit=False)
 
-            #cifro contraseña
-            formulario.set_password(formulario_persona.cleaned_data['password'])
-            formulario.save()
-
-            #clono el correo en el campo user
-            p = Persona.objects.get(username=request.POST["username"])
-            p.email = request.POST["username"]
-            p.save()
-            
-            return render(request, 'Home/registro.html', {'form':formulario_persona, 'Mensaje':'se ha registrado el usuario con exito.','tipo':'success'})
+                #cifro contraseña
+                formulario.set_password(formulario_persona.cleaned_data['password'])
+                formulario.email = request.POST["username"]
+                formulario.save()
+                return render(request, 'Home/registro.html', {'form':formulario_persona, 'Mensaje':'se ha registrado el usuario con exito.','tipo':'success'})
+            else:
+                return render(request, 'Home/registro.html', {'form':formulario_persona, 'Mensaje':'Las contraseñas no coinciden.','tipo':'danger'})
         else:
             return render(request, 'Home/registro.html', {'form':formulario_persona, 'Mensaje':'Se tiene un error en el formulario.','tipo':'danger'})
             

@@ -14,6 +14,7 @@ class Empresa(models.Model):
     Activos = models.CharField(blank=True, max_length=12)
     Numero_empleados = models.CharField(blank=True, max_length=100)
     usuario = models.OneToOneField(Persona, null=True,on_delete=models.CASCADE)
+    Tipo_empresa = models.CharField(null=True, max_length=50)
 
     def __str__(self):
         return "{} - {}".format(self.NIT, self.Nombre_empresa)
