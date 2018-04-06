@@ -55,36 +55,43 @@
             <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="panel-heading text-center"><img src="{% static 'assets/img/logo2.png' %}" alt="Apolo" width="102" height="140" class="logo-img"><span class="splash-description">Registro de usuario</span></div>
                     <div class="panel-body">
-                <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed needs-validation" novalidate="">
                     {% csrf_token %}
                    <!-- {{form.as_p}} -->
                  {{form.non_field_errors}}
                 <div class="form-group">
-                    {{form.first_name.errors}}
+                    
                     <label for="form.first_name.id_for_label" class="col-sm-3 control-label">Nombres</label>
                     <div class="col-sm-6">
-                    {{form.first_name}}
+                        {{form.first_name}}
+                        {{form.first_name.errors}}
                     </div>
                 </div>
                 <div class="form-group">
-                        {{form.last_name.errors}}
+                        
                         <label for="form.last_name.id_for_label" class="col-sm-3 control-label">Apellidos</label>
                         <div class="col-sm-6">
-                        {{form.last_name}}
+                            {{form.last_name}}
+                            {{form.last_name.errors}}
                         </div>
                 </div>
                 <div class="form-group">
-                        {{form.username.errors}}
+                        
                         <label for="form.username.id_for_label" class="col-sm-3 control-label">Correo electrónico</label>
                         <div class="col-sm-6">
-                        {{form.username}}
+                            {{form.username}}
+                            {{form.username.errors}}
+                            <div class="invalid-feedback">
+                                Usa un correo electronico valido como: @gmail.com, @hotmail.com, @yahoo.com, entre otros.
+                            </div>
                         </div>
                 </div>
                 <div class="form-group">
-                    {{form.password.errors}}
+                    
                     <label for="form.password.id_for_label" class="col-sm-3 control-label">Contraseña</label>
                     <div class="col-sm-6">
-                        {{form.password}}                   
+                        {{form.password}}      
+                        {{form.password.errors}}             
                     </div>
                 </div>
                 <div class="form-group">

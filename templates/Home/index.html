@@ -1,11 +1,13 @@
 {% extends "base/base.html" %}
 
+{% load staticfiles %}
+
 {% block titulo %}Apolo{% endblock titulo %}
 
 {% block content %}
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white">
-  <a class="navbar-brand" id="Titulo" href="#"><i class="material-icons">cloud</i>  APOLO</a>
+  <a class="navbar-brand" id="Titulo" href="#"><img src="{% static 'assets/img/logo5.png' %}" width="170" height="65" class="d-inline-block align-top" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
