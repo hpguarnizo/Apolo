@@ -50,11 +50,11 @@
         </div>
     {% endif %}   
     
-    <div class="ml-auto">
-        <div class="col-ml-8">
-            <div class="panel panel-default">
-            <div class="panel-heading panel-heading-divider">Registro<span class="panel-subtitle">These are the basic bootstrap form elements</span></div>
-            <div class="panel-body">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default panel-border-color panel-border-color-primary">
+                    <div class="panel-heading text-center"><img src="{% static 'assets/img/logo2.png' %}" alt="Apolo" width="102" height="140" class="logo-img"><span class="splash-description">Registro de usuario</span></div>
+                    <div class="panel-body">
                 <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                     {% csrf_token %}
                    <!-- {{form.as_p}} -->
@@ -98,7 +98,10 @@
                 {{form.is_staff}} 
                 {{form.is_superuser}} 
                 {{form.last_login}} 
-                <button type="submit" class="btn btn-primary" name="button">Registro</button>                                
+
+                <div class="text-center">
+                        <button type="submit" class="btn btn-primary" name="button">Registro</button> 
+                </div>
                 </form>
             </div>
             </div>
