@@ -13,9 +13,6 @@
 	  <li class="nav-item active">
 		<a class="nav-link" href="#section1">¿Qué somos? <span class="sr-only">(current)</span></a>
 		</li>
-		<li class="nav-item active">
-			<a class="nav-link" href="{% url 'user:registro'%}">¿Qué somos2? <span class="sr-only">(current)</span></a>
-		</li>
 	  <li class="nav-item">
 		<a class="nav-link" href="{% url 'user:login'%}">Entrar</a>
 	  </li>
@@ -32,7 +29,7 @@
 			<hr class="my-4">
 			<p class="d-none d-lg-block">It uses utility classes for typography and spacing to space content out within the larger container.</p>
 			<p class="lead">
-				<a class=" btn btn-primary btn-lg" href="#section2" role="button">Conoce más...</a>
+				<a class=" btn btn-primary btn-lg" href="{% url 'user:registro'%}" role="button">Registrate es completamente gratis.</a>
 			</p>
 		</div>
 	</div>

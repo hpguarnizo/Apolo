@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{% static "assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"%}"/>
 <link rel="stylesheet" type="text/css" href="{% static "assets/css/style.css"%}" />
 <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'assets/lib/material-design-icons/css/material-design-iconic-font.min.css' %}"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="shortcut icon" href="{% static "assets/img/logo-fav.png"%}">
 {% endblock css %}
 
@@ -189,20 +189,16 @@
                   <div class="user-display-bottom">
                     <div class="user-display-avatar"><img src="{% static 'assets/img/avatar-150.png' %}" alt="Avatar"></div>
                     <div class="user-display-info">
-                      <div class="name">Kristopher Donny</div>
-                      <div class="nick"><span class="mdi mdi-account"></span> KDonny</div>
+                      <div class="name">{{empresa.usuario.first_name}} {{ empresa.usuario.last_name}}</div>
+                      <div class="nick"><i class="zmdi zmdi-balance"></i>{{ empresa.Nombre_empresa}}</div>
                     </div>
                     <div class="row user-display-details">
                       <div class="col-xs-4">
-                        <div class="title">Issues</div>
-                        <div class="counter">26</div>
+                        <div class="title">Evaluciones realizadas</div>
+                        <div class="counter">{{Contador}}</div>
                       </div>
                       <div class="col-xs-4">
-                        <div class="title">Commits</div>
-                        <div class="counter">26</div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="title">Followers</div>
+                        <div class="title">Planes de mejoramiento</div>
                         <div class="counter">26</div>
                       </div>
                     </div>

@@ -22,9 +22,14 @@
                                 <ul role="menu" class="dropdown-menu">
                                     <li>
                                         <div class="user-info">
-                                            <div class="user-name">{{persona.first_name}}</div>
-                                            <div class="user-position">{{empresa.Nombre_empresa}}</div>
-                                            <div class="user-position">Tipo de empresa: {{empresa.Sector}}</div>
+                                            
+                                            {% if empresa != '' %}
+                                                <div class="user-name">{{empresa.usuario.first_name}}</div>
+                                                <div class="user-position">{{empresa.Nombre_empresa}}</div>
+                                                <div class="user-position">Tipo de empresa: {{empresa.Sector}}</div>
+                                            {% else %}
+                                                <div class="user-name">{{persona.first_name}}</div>
+                                            {% endif %}
                                         </div>
                                     </li>
                                     <li><a href="{% url 'empresa:perfil' %}"><span class="icon mdi mdi-face"></span> Account</a></li>
