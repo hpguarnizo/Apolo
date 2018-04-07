@@ -39,7 +39,7 @@
             <div class="panel panel-default">
                     <div class="panel-heading text-center"><img src="{% static 'assets/img/logo2.png' %}" alt="Apolo" width="102" height="140" class="logo-img"><span class="splash-description">Registro de empresa</span></div>
             <div class="panel-body">
-                <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed needs-validation" novalidate>
                     {% csrf_token %}
                    <!-- {{form.as_p}} -->
                  {{form.non_field_errors}}
