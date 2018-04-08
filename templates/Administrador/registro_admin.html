@@ -1,0 +1,142 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block titulo %}Apolo{% endblock titulo %}
+
+{% block css %}
+    <link rel="shortcut icon" href="{% static "assets/img/logo4.png"%}">
+    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+    <style>
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #404040;
+        background-color: #EEEEEE;
+    }
+    </style>
+       
+{% endblock css %}
+
+{% block content %}
+<nav class="navbar border navbar-expand-lg fixed-top navbar-light bg-white">
+    <a class="navbar-brand" id="Titulo" href="{% url 'user:index' %}"><i class="material-icons">cloud</i>  APOLO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	<ul class=" navbar-nav ml-auto">
+	  <li class="nav-item active">
+		<a class="nav-link" href="#section1">¿Qué somos? <span class="sr-only">(current)</span></a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="{% url 'user:login'%}">Entrar</a>
+	  </li>
+	</ul>
+  </div>
+</nav>
+
+
+<div id="section1" class="container-fluid" >
+    {% if Mensaje != '' %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-{{tipo}} alert-dismissible fade show" role="alert">
+                  <strong>Santo guacamole!</strong> {{Mensaje}}.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </div>
+        </div>
+    {% endif %}   
+    
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default panel-border-color panel-border-color-primary">
+                    <div class="panel-heading text-center"><img src="{% static 'assets/img/logo2.png' %}" alt="Apolo" width="102" height="140" class="logo-img"><span class="splash-description">Registro de usuario</span></div>
+                    <div class="panel-body">
+                <form method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed needs-validation" novalidate="">
+                    {% csrf_token %}
+                   <!-- {{form.as_p}} -->
+                 {{form.non_field_errors}}
+
+                 <div class="form-group">
+                    
+                    <label for="form.first_name.id_for_label" class="col-sm-3 control-label">Identificación</label>
+                    <div class="col-sm-6">
+                        {{form_admin.Identificacion}}
+                        {{form_admin.Permiso.errors}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="form.first_name.id_for_label" class="col-sm-3 control-label">Nombres</label>
+                    <div class="col-sm-6">
+                        {{form.first_name}}
+                        {{form.first_name.errors}}
+                    </div>
+                </div>
+                <div class="form-group">
+                        
+                        <label for="form.last_name.id_for_label" class="col-sm-3 control-label">Apellidos</label>
+                        <div class="col-sm-6">
+                            {{form.last_name}}
+                            {{form.last_name.errors}}
+                        </div>
+                </div>
+                <div class="form-group">
+                        
+                        <label for="form.username.id_for_label" class="col-sm-3 control-label">Correo electrónico</label>
+                        <div class="col-sm-6">
+                            {{form.username}}
+                            {{form.username.errors}}
+                            <div class="invalid-feedback">
+                                Usa un correo electronico valido como: @gmail.com, @hotmail.com, @yahoo.com, entre otros.
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="form.password.id_for_label" class="col-sm-3 control-label">Contraseña</label>
+                    <div class="col-sm-6">
+                        {{form.password}}      
+                        {{form.password.errors}}             
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-sm-3 control-label">Confirmar contraseña</label>
+                        <div class="col-sm-6">                            
+                        <input type="password" name="c_contraseña" class="form-control">
+                        </div>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="form.first_name.id_for_label" class="col-sm-3 control-label">Permisos</label>
+                    <div class="col-sm-6">
+                        {{form_admin.permiso}}
+                        {{form_admin.permiso.errors}}
+                    </div>
+                </div>
+                {{form.date_joined}} 
+                {{form.is_active}} 
+                {{form.is_staff}} 
+                {{form.is_superuser}} 
+                {{form.last_login}} 
+
+                <div class="text-center">
+                        <button type="submit" class="btn btn-primary" name="button">Registro</button> 
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>             
+{% endblock content %}
+
+{% block modales %}
+
+{% endblock modales %}
+
+{% block script %}
+
+{% endblock script %}

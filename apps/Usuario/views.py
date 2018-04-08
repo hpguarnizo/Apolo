@@ -32,7 +32,10 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request,"Home/index.html")
     else:
-        return redirect('empresas:index')
+        if request.session.get('pk_user', False):
+            return redirect('empresas:index')
+        else:
+            return redirect('administrador:inicio')
 
 
 def Registro_usuario(request):
