@@ -16,43 +16,43 @@
 
 {% block menu-lateral %}
 <div class="be-left-sidebar">
-    <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Dashboard</a>
-      <div class="left-sidebar-spacer">
-        <div class="left-sidebar-scroll">
-          <div class="left-sidebar-content">
-            <ul class="sidebar-elements">
-              <li class="divider">Menu</li>
-              <li class="active"><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
-              </li>
-              <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
-                <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+  <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Dashboard</a>
+    <div class="left-sidebar-spacer">
+      <div class="left-sidebar-scroll">
+        <div class="left-sidebar-content">
+          <ul class="sidebar-elements">
+            <li class="divider">Menu</li>
+            <li><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
+            </li>
+            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
+              <ul class="sub-menu">
+                <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+                </li>
+                <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
+                </li>                 
+              </ul>
+            </li>
+            <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
+              <ul class="sub-menu">
+                  <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
                   </li>
-                  <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
+                  <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
                   </li>                 
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
-                <ul class="sub-menu">
-                        <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
-                        </li>
-                        <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
-                        </li>                 
-                      </ul>
-              </li>                
-            </ul>
-          </div>
+              </ul>
+            </li>                
+          </ul>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock menu-lateral %}
 
 {% block content %}        
 <div class="be-content">
     <div class="main-content container-fluid">
       <div class="row">
-       
+       Crear evaluación
     </div>
   </div>
 </div>
