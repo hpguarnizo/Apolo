@@ -4,8 +4,11 @@ from apps.Usuario.models import Persona
 from apps.Administrador.models import Administrador
 from apps.Usuario.forms import Registro_Persona_Form
 from apps.Administrador.forms import Registro_Administrador_Form
+from apps.Evaluacion.forms import Registro_area
 from django.contrib.auth import authenticate, login as dj_login
 from django.contrib.auth.decorators import login_required
+from apps.Evaluacion.models import Area
+
 
 def login(request):
     if request.method == "POST":
@@ -27,19 +30,40 @@ def login(request):
     return render(request, 'Home/login.html',{ 'Mensaje':''})
 
 @login_required(login_url='admon:registro')
-def index(request):
+def index(request, sign='0'):
     username = request.session['pk_admon']
     persona = Persona.objects.get(username=username)
     persona_admin = list(Administrador.objects.filter(usuario=persona))
     if len(persona_admin) > 0:
         admin = Administrador.objects.get(usuario=persona)
-        return render(request,"Administrador/index.html",{'admin':admin, 'empresa': ''})
+        if(sign == '0'):
+            return render(request,"Administrador/index.html",{'admin':admin, 'form_area': '','Mensaje':'','tipo':'success','icono':''})
+        elif(sign == '1'):
+            if request.method == 'POST':
+                formulario_area = Registro_area(request.POST)
+                if(formulario_area.is_valid()):
+                    formulario_area.save()
+                    return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'Se ha creado el area con exito','tipo':'success', 'icono':'check'})
+                else:
+                    return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'Ha ocurrido un error','tipo':'danger','icono':'close-circle-o'})
+            else:
+                formulario_area = Registro_area()
+            
+            return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'','tipo':'','icono':''})
+            
     else:
         return redirect('empresa:registro')
     
 
 def verEvaluacion(request):
     return render(request,"Administrador/verEva.html")
+
+def verAreas(request):
+    areas = Area.objects.all()
+    username = request.session['pk_admon']
+    persona = Persona.objects.get(username=username)
+    admin = Administrador.objects.get(usuario=persona)
+    return render(request,"Administrador/verArea.html",{'admin':admin,'areas':areas})
 
 def crearEvaluacion(request):
     return render(request,"Administrador/crearEva.html")
