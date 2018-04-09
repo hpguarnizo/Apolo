@@ -17,13 +17,13 @@ class Registro_Administrador_Form(forms.ModelForm):
         ]
 
         labels = {
-            'Identificacion':'Identificacion del usuario',
+            'Identificacion':'Identificación del usuario',
             'permiso': 'Permisos del usuario',
         }
 
         help_texts = {
-            'Identificacion': 'Su Número de Identificación Tributaria',
-            'permiso': '¿En qué ambito se genera su actividad economica?.',
+            'Identificacion': 'Su número de identificación tributaria',
+            'Permiso': '¿En qué ámbito se genera su actividad económica?.',
             
         }
         widgets = {
