@@ -12,93 +12,73 @@
 <link rel="stylesheet" type="text/css" href="{% static "assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"%}"/>
 <link rel="stylesheet" type="text/css" href="{% static "assets/css/style.css"%}" />
 <link rel="shortcut icon" href="{% static "assets/img/logo4.png"%}">
-
 {% endblock css %}
 
 {% block menu-lateral %}
 <div class="be-left-sidebar">
-    <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Dashboard</a>
-      <div class="left-sidebar-spacer">
-        <div class="left-sidebar-scroll">
-          <div class="left-sidebar-content">
-            <ul class="sidebar-elements">
-              <li class="divider">Menu</li>
-              <li class="active"><a href="{% url 'admon:inicio' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
-              </li>
-              <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
-                <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+  <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Dashboard</a>
+    <div class="left-sidebar-spacer">
+      <div class="left-sidebar-scroll">
+        <div class="left-sidebar-content">
+          <ul class="sidebar-elements">
+            <li class="divider">Menu</li>
+            <li><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
+            </li>
+            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
+              <ul class="sub-menu">
+                <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+                </li>
+                <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
+                </li>                 
+              </ul>
+            </li>
+            <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
+              <ul class="sub-menu">
+                  <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
                   </li>
-                  <li><a href="{% url 'admon:inicio' sign=2 %}">Crear evaluaciones</a>
+                  <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
                   </li>                 
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
-                <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verArea' %}">Ver áreas</a>
-                  </li>
-                  <li><a href="{% url 'admon:inicio' sign=1 %}">Crear Area</a>
-                  </li>                 
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
-                <ul class="sub-menu">
-                    <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
-                    </li>
-                    <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
-                    </li>                 
-                </ul>
-              </li>                
-            </ul>
-          </div>
+              </ul>
+            </li>                
+          </ul>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock menu-lateral %}
 
 {% block content %}        
 <div class="be-content">
     <div class="main-content container-fluid">
       <div class="row">
-        {% if Mensaje != '' %}
-          <div role="alert" class="alert alert-{{tipo}} alert-icon alert-dismissible">
-            <div class="icon"><span class="mdi mdi-{{icono}}"></span></div>
-            <div class="message">
-              <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>
-              {% if icono == 'close-circle-o' %}
-                Algo salio mal!
-              {% else %}
-                Bien!
-              {% endif %}
-                </strong> {{Mensaje}}.
-            </div>
-          </div>
-      {% endif %}   
-        <!-- panel Creacion Areas -->
-        
-        {% if  form_area != '' %}          
           <div class="col-md-12">
-            <div class="panel panel-default" role="alert">
-              <div class="panel-heading panel-heading-divider">Creación Areas
-                <div class="tools"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="icon mdi mdi-close"></span></button></div><span class="panel-subtitle">Panel subtitle description</span>
-              </div>
-              <div class="panel-body">
-                <form  method="POST">
-                  {% csrf_token %}
-                  {{form_area.as_p}}
-                  <div class="text-center">
-                      <button type="submit" class="btn btn-success" name="button">Aceptar</button> 
-                  </div> 
-                </form>
+              <div class="panel panel-default" role="alert">
+                <div class="panel-heading panel-heading-divider">Listado de Areas
+                  <div class="tools"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="icon mdi mdi-close"></span></button></div><span class="panel-subtitle">Panel subtitle description</span>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th >Nombre</th>
+                            <th style="width:50%;">Descripción</th>
+                            <th class="actions"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for x in areas %}
+                          <tr>
+                            <td>{{x.Nombre}}</td>
+                            <td style="width:50%;">{{x.Descripcion}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    
+                </div>
               </div>
             </div>
-          </div>
-        {% endif %}
-
-        <!-- panel Creacion Areas -->
-
-
     </div>
   </div>
 </div>
