@@ -18,12 +18,12 @@ class Registro_empresa_Form(forms.ModelForm):
             'Nombre_empresa':'Nombre de su empresa',
             'Sector':'Sector en el que trabaja su empresa',
             'Activos':'Activos anuales de su empresa',
-            'Numero_empleados':'Numero de empleados actuales en su empresa',
+            'Numero_empleados':'Número de empleados actuales en su empresa',
         }
         help_texts = {
-            'NIT': 'Su Número de Identificación Tributaria',
-            'Sector': '¿En qué ambito se genera su actividad economica?.',
-            'Activos': 'Activos en millones generados por su empresa en un año, ejemplo: 121.350.255',
+            'NIT': 'Su número de identificación tributaria',
+            'Sector': '¿En qué ambito se genera su actividad económica?.',
+            'Activos': 'Activos en millones generados por su empresa en un año. Ejemplo: 121.350.255',
         }
         widgets = {
             'NIT': forms.TextInput(attrs={'class':'form-control'}),
