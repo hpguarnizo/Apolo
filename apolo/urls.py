@@ -21,5 +21,5 @@ urlpatterns = [
     path('', include('apps.Usuario.urls', namespace="usuarios")),
     path('Empresa/', include('apps.Empresa.urls', namespace="empresas")),
     path('Administrador/', include('apps.Administrador.urls', namespace="administrador")),
-    #path('Evaluacion/', include('apps.Evaluacion.urls')),
+    path('Evaluacion/', include('apps.Evaluacion.urls',namespace="evaluacion")),
 ]

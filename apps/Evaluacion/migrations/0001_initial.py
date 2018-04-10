@@ -18,14 +18,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Area',
             fields=[
-                ('Nombre', models.CharField(max_length=25, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('Nombre', models.CharField(max_length=25,  serialize=False)),
                 ('Descripcion', models.TextField(blank=True, max_length=500)),
             ],
         ),
         migrations.CreateModel(
             name='EvaluacionCompetitividad',
             fields=[
-                ('Nombre', models.CharField(max_length=25, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('Nombre', models.CharField(max_length=25, serialize=False)),
                 ('Fecha_creacion', models.DateField(default=datetime.datetime.now)),
                 ('Descripcion', models.TextField(blank=True, max_length=600)),
                 ('Admin', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Administrador.Administrador')),
@@ -35,14 +37,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Indicador',
             fields=[
-                ('Nombre', models.CharField(max_length=35, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('Nombre', models.CharField(max_length=35,  serialize=False)),
                 ('Areas', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Evaluacion.Area')),
             ],
         ),
         migrations.CreateModel(
             name='Pregunta',
             fields=[
-                ('Contenido', models.TextField(max_length=500, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('Contenido', models.TextField(max_length=500,  serialize=False)),
                 ('Indicadores', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Evaluacion.Indicador')),
             ],
         ),

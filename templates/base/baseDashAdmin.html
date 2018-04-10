@@ -24,17 +24,16 @@
                 </div>
                 <div class="be-right-navbar">
                     <ul class="nav navbar-nav navbar-right be-user-nav">
-                        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="{% static "assets/img/avatar.png"%}" alt="Avatar"><span class="user-name">{{persona.first_name}}</span></a>
+                        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="{% static "assets/img/avatar.png"%}" alt="Avatar"><span class="user-name">{{admin.usuario.first_name}}</span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li>
                                     <div class="user-info">
-                                            <div class="user-name">{{admin.usuario.first_name}}</div>
-                                            
+                                        <div class="user-name">{{admin.usuario.first_name}}</div>
                                     </div>
                                 </li>
-                                <li><a href="{% url 'empresa:perfil' %}"><span class="icon mdi mdi-face"></span> Perfil</a></li>
+                                <li><a href="#"><span class="icon mdi mdi-face"></span> Perfil</a></li>
                                 <li><a href="#"><span class="icon mdi mdi-settings"></span> Ajustes</a></li>
-                                <li><a href="{% url 'empresa:logout' %}"><span class="icon mdi mdi-power"></span> Salir</a></li>
+                                <li><a href="{% url 'admon:logout' %}"><span class="icon mdi mdi-power"></span> Salir</a></li>
                             </ul>
                         </li>
                     </ul>

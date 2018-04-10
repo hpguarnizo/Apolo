@@ -24,7 +24,7 @@
             <li class="divider">Menu</li>
             <li><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
             </li>
-            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
+            <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
               <ul class="sub-menu">
                 <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
                 </li>
@@ -40,7 +40,7 @@
                 </li>                 
               </ul>
             </li>
-            <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Indicadores</span></a>
+            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Indicadores</span></a>
               <ul class="sub-menu">
                 <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
                 </li>
@@ -68,7 +68,45 @@
 <div class="be-content">
     <div class="main-content container-fluid">
       <div class="row">
-       Ver evaluacion
+
+        <!-- Alert confirmación de formulario -->
+        {% if Mensaje != '' %}
+            <div role="alert" class="alert alert-{{tipo}} alert-icon alert-dismissible">
+              <div class="icon"><span class="mdi mdi-{{icono}}"></span></div>
+              <div class="message">
+                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>
+                {% if icono == 'close-circle-o' %}
+                  Algo salio mal!
+                {% else %}
+                  Bien!
+                {% endif %}
+                  </strong> {{Mensaje}}.
+              </div>
+            </div>
+        {% endif %}
+
+      <!-- panel Creacion Areas -->
+      
+      {% if  form_area != '' %}  
+        <div class="col-md-12">
+          <div class="panel panel-default" role="alert">
+            <div class="panel-heading panel-heading-divider">Creación de indicadores
+              <div class="tools"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="icon mdi mdi-close"></span></button></div><span class="panel-subtitle">Panel subtitle description</span>
+            </div>
+            <div class="panel-body">
+            
+              <form  method="POST">
+                {% csrf_token %}
+                {{form_area.as_p}}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success" name="button">Aceptar</button> 
+                </div> 
+              </form>
+            </div>
+          </div>
+        </div>  
+      {% endif %}
+
     </div>
   </div>
 </div>

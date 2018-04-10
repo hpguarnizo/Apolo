@@ -23,7 +23,7 @@ class Registro_Administrador_Form(forms.ModelForm):
 
         help_texts = {
             'Identificacion': 'Su número de identificación tributaria',
-            'Permiso': '¿En qué ámbito se genera su actividad económica?.',
+            'permiso': '¿En qué ámbito se genera su actividad económica?.',
             
         }
         widgets = {
