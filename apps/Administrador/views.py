@@ -43,7 +43,7 @@ def index(request, sign='0'):
                 formulario_area = Registro_area(request.POST)
                 if(formulario_area.is_valid()):
                     formulario_area.save()
-                    return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'Se ha creado el area con exito','tipo':'success', 'icono':'check'})
+                    return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'Se ha creado el área con éxito','tipo':'success', 'icono':'check'})
                 else:
                     return render(request,"Administrador/index.html",{'admin':admin, 'form_area': formulario_area,'Mensaje':'Ha ocurrido un error','tipo':'danger','icono':'close-circle-o'})
             else:

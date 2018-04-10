@@ -24,11 +24,19 @@
             <li class="divider">Menu</li>
             <li><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
             </li>
-            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
+            <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
               <ul class="sub-menu">
                 <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
                 </li>
                 <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
+                </li>                 
+              </ul>
+            </li>
+            <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
+              <ul class="sub-menu">
+                <li><a href="{% url 'admon:verArea' %}">Ver áreas</a>
+                </li>
+                <li><a href="{% url 'admon:inicio' sign=1 %}">Crear Area</a>
                 </li>                 
               </ul>
             </li>

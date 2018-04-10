@@ -32,6 +32,14 @@
                 </li>                 
               </ul>
             </li>
+            <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
+              <ul class="sub-menu">
+                <li><a href="{% url 'admon:verArea' %}">Ver áreas</a>
+                </li>
+                <li><a href="{% url 'admon:inicio' sign=1 %}">Crear Area</a>
+                </li>                 
+              </ul>
+            </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
               <ul class="sub-menu">
                   <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
