@@ -26,34 +26,37 @@
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
               <ul class="sub-menu">
+                <li><a href="{% url 'admon:crearEva' %}">Crear evaluación</a>
+                </li>
                 <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
                 </li>
-                <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
-                </li>                 
+                                 
               </ul>
             </li>
             <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
               <ul class="sub-menu">
+                <li><a href="{% url 'evaluacion:cArea' %}">Crear área</a>
+                </li>
                 <li><a href="{% url 'evaluacion:vArea' %}">Ver áreas</a>
                 </li>
-                <li><a href="{% url 'evaluacion:cArea' %}">Crear Area</a>
-                </li>                 
+                                 
               </ul>
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Indicadores</span></a>
               <ul class="sub-menu">
+                <li><a href="{% url 'evaluacion:cindi' %}">Crear indicador</a>
+                </li>
                 <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
                 </li>
-                <li><a href="{% url 'evaluacion:cindi' %}">Crear indicador</a>
-                </li>                 
+                                 
               </ul>
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
               <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
-                  </li>
-                  <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
-                  </li>                 
+                <li><a href="{% url 'admon:crearPlan' %}">Crear plan</a>
+                </li>   
+                <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
+                </li>                                  
               </ul>
             </li>                
           </ul>
@@ -90,8 +93,10 @@
       {% if  form_area != '' %}          
         <div class="col-md-12">
           <div class="panel panel-default" role="alert">
-            <div class="panel-heading panel-heading-divider">Creación Areas
-              <div class="tools"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="icon mdi mdi-close"></span></button></div><span class="panel-subtitle">Panel subtitle description</span>
+            <div class="panel-heading panel-heading-divider">Creación de áreas
+              <span class="panel-subtitle">
+                Cree un área para evaluarla en una empresa, añada los indicadores que componen el área y luego añada el areá a una evaluación. 
+              </span>
             </div>
             <div class="panel-body">
               <form  method="POST">

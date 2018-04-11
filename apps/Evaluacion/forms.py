@@ -23,8 +23,8 @@ class Registro_area(forms.ModelForm):
         }
 
         help_texts = {
-            'Nombre': 'Nota: El nombre debe de ser facilmente identificable, las áreas no pueden compartir un nombre.',
-            'Descripcion': 'Descripción detallada sobre el área',
+            'Nombre': 'Nota: El nombre debe de ser fácilmente identificable, las áreas no pueden tener el mismo nombre.',
+            'Descripcion': 'Descripción detallada sobre el área.',
             
         }
         widgets = {
@@ -45,12 +45,12 @@ class Registro_indicador(forms.ModelForm):
 
         labels = {
             'Nombre':'Nombre del indicador',
-            'Areas': '¿A que área pertenece el indicador?',
+            'Areas': '¿A cuál área pertenece el indicador?',
         }
 
         help_texts = {
-            'Nombre': 'Nota: El nombre debe de ser facilmente identificable, las áreas no pueden compartir un nombre.',
-            'Areas': 'Descripción detallada sobre el área',
+            'Nombre': 'Nota: El nombre debe de ser facilmente identificable, los indicadores no pueden tener el mismo nombre.',
+            'Areas': 'Descripción detallada sobre el indicador.',
             
         }
         widgets = {

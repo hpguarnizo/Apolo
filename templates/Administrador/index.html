@@ -27,34 +27,34 @@
               </li>
               <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
                 <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+                  <li><a href="{% url 'admon:crearEva' %}">Crear evaluación</a>
                   </li>
-                  <li><a href="{% url 'admon:inicio' %}">Crear evaluaciones</a>
-                  </li>                 
+                  <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
+                  </li>          
                 </ul>
               </li>
               <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
                 <ul class="sub-menu">
-                  <li><a href="{% url 'evaluacion:vArea' %}">Ver áreas</a>
+                  <li><a href="{% url 'evaluacion:cArea' %}">Crear área</a>
                   </li>
-                  <li><a href="{% url 'evaluacion:cArea' %}">Crear Area</a>
-                  </li>                 
+                  <li><a href="{% url 'evaluacion:vArea' %}">Ver áreas</a>
+                  </li>                                   
                 </ul>
               </li>
               <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Indicadores</span></a>
                 <ul class="sub-menu">
-                  <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
-                  </li>
                   <li><a href="{% url 'evaluacion:cindi' %}">Crear indicador</a>
-                  </li>                 
+                  </li> 
+                  <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
+                  </li>                                  
                 </ul>
               </li>
               <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
-                <ul class="sub-menu">
+                <ul class="sub-menu">                  
+                    <li><a href="{% url 'admon:crearPlan' %}">Crear plan</a>
+                    </li> 
                     <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
-                    </li>
-                    <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
-                    </li>                 
+                    </li>                
                 </ul>
               </li>                
             </ul>
