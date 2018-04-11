@@ -25,34 +25,34 @@
             <li><a href="{% url 'usuarios:index' %}"><i class="icon mdi mdi-home"></i><span>Inicio</span></a>
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Evaluaciones</span></a>
-              <ul class="sub-menu">
+              <ul class="sub-menu">              
+                <li><a href="{% url 'admon:crearEva' %}">Crear evaluación</a>
+                </li> 
                 <li><a href="{% url 'admon:verEva' %}">Ver evaluaciones</a>
-                </li>
-                <li><a href="{% url 'admon:crearEva' %}">Crear evaluaciones</a>
-                </li>                 
+                </li>                
               </ul>
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-chart"></i><span>Áreas</span></a>
               <ul class="sub-menu">
+                <li><a href="{% url 'evaluacion:cArea' %}">Crear área</a>
+                </li> 
                 <li><a href="{% url 'evaluacion:vArea' %}">Ver áreas</a>
-                </li>
-                <li><a href="{% url 'evaluacion:cArea' %}">Crear Area</a>
-                </li>                 
+                </li>                                
               </ul>
             </li>
             <li class="parent active"><a href="#"><i class="icon mdi mdi-chart"></i><span>Indicadores</span></a>
               <ul class="sub-menu">
-                <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
-                </li>
                 <li><a href="{% url 'evaluacion:cindi' %}">Crear indicador</a>
-                </li>                 
+                </li>
+                <li><a href="{% url 'evaluacion:vindi' %}">Ver indicadores</a>
+                </li>                                 
               </ul>
             </li>
             <li class="parent"><a href="#"><i class="icon mdi mdi-assignment-o"></i><span>Plan de mejoramiento</span></a>
-              <ul class="sub-menu">
-                  <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
+              <ul class="sub-menu">                
+                  <li><a href="{% url 'admon:crearPlan' %}">Crear plan</a>
                   </li>
-                  <li><a href="{% url 'admon:crearPlan' %}">Crear planes</a>
+                  <li><a href="{% url 'admon:verPlan' %}">Ver planes</a>
                   </li>                 
               </ul>
             </li>                
@@ -66,36 +66,40 @@
 
 {% block content %}        
 <div class="be-content">
-    <div class="main-content container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="panel panel-default" role="alert">
-                <div class="panel-heading panel-heading-divider">Listado de Areas
-                  <div class="tools"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="icon mdi mdi-close"></span></button></div><span class="panel-subtitle">Panel subtitle description</span>
-                </div>
-                <div class="panel-body">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th >Nombre</th>
-                            <th style="width:50%;">Descripción</th>
-                            <th class="actions"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        {% for x in indicadores %}
-                          <tr>
-                            <td>{{x.Nombre}}</td>
-                            <td >{{x.Areas.Nombre}}</td>
-                            <td ><a href="{% url 'eva:mindi' clave=x.id %}">Editar</a></td>
-                          </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    
-                </div>
-              </div>
-            </div>
+  <div class="main-content container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default" role="alert">
+          <div class="panel-heading panel-heading-divider">Listado de indicadores
+            <span class="panel-subtitle">Indicadores creados hasta el momento.</span>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 30%">Nombre</th>
+                  <th style="width: 30%">Área a la que pertenece</th>
+                  <th style="width: 40%">Opción</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for x in indicadores %}
+                <tr>
+                  <td>{{x.Nombre}}</td>
+                  <td >{{x.Areas.Nombre}}</td>
+                  <td >
+                    <a href="{% url 'eva:mindi' clave=x.id %}">
+                      <i class="icon mdi mdi-edit"></i>
+                      <span> Editar</span>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>                    
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
